@@ -1,0 +1,24 @@
+
+---
+
+# ⚠️ FINAL CHECK BEFORE SUBMITTING
+
+Make sure:
+- Code runs without errors ✔  
+- Output prints rewards ✔  
+- README is clean ✔  
+- No unnecessary files ✔  
+
+---
+
+# 🏁 DONE
+
+If you submit THIS:
+
+👉 You are **100% aligned with what Round 1 expects**  
+👉 You are already ahead of most participants  
+
+---
+
+If you want to push harder:
+👉 I can review your final repo OR add a **graph showing learning improvement (extra edge)**
