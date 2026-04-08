@@ -1,27 +1,33 @@
-from env import TheftEnv
 from fastapi import FastAPI
+from pydantic import BaseModel
+from env import TheftEnv
 
 app = FastAPI()
-
-@app.post("/reset")
-def api_reset():
-    return reset()
-
-@app.post("/step")
-def api_step(action: int):
-    return step(action)
 env = TheftEnv()
 
+# Input schema
+class ActionInput(BaseModel):
+    action: int
+
+# Health check (important for HF)
+@app.get("/")
+def home():
+    return {"status": "running"}
+
+# Reset environment
+@app.post("/reset")
 def reset():
     state = env.reset()
     return {
         "state": list(state)
     }
 
-def step(action):
-    next_state, reward, done = env.step(action)
+# Step function
+@app.post("/step")
+def step(input: ActionInput):
+    next_state, reward, done = env.step(input.action)
     return {
         "state": list(next_state),
-        "reward": reward,
-        "done": done
+        "reward": float(reward),
+        "done": bool(done)
     }
